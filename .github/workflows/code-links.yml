@@ -1,0 +1,20 @@
+name: Проверка ссылок на код
+
+on:
+  push:
+    paths: ["code/**", "textbook/**", "*.md", "tools/**"]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Ссылки на код актуальны
+        run: python3 tools/update_code_links.py --check
+      - name: Тесты главы 1
+        working-directory: code/ch01
+        run: python3 -m unittest -v

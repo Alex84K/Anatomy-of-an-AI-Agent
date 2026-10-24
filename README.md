@@ -39,6 +39,24 @@ python3 -m unittest test_ch01.py -v
 
 Модель подключается через простой протокол (`LLM` в `agent_loop.py`): адаптер к API любого провайдера — это одна функция. Тесты работают на заглушке модели, без сети и без ключей.
 
+## Ссылки на код в тексте
+
+Названия функций, классов и тестов в главах кликабельны: на GitHub ссылка открывает нужный фрагмент с подсветкой строк. Номера строк вручную не пишутся — в ссылке указывается имя символа:
+
+```markdown
+[`run_agent`](../code/ch01/agent_loop.py "code:run_agent")
+[тест](../code/ch01/test_ch01.py "code:AgentLoopTests.test_token_budget")
+```
+
+После правки кода или текста обновите номера строк:
+
+```bash
+python3 tools/update_code_links.py          # проставить актуальные #Lstart-Lend
+python3 tools/update_code_links.py --check  # только проверить (так же проверяет CI)
+```
+
+GitHub Actions ([`.github/workflows/code-links.yml`](.github/workflows/code-links.yml)) при каждом push проверяет, что ссылки актуальны, и прогоняет тесты.
+
 ## Принципы
 
 1. Проблема продакшен-агентов не в модели, а в инженерии вокруг неё.
