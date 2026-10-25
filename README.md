@@ -17,7 +17,7 @@
 | # | Тема | Статус |
 | :--- | :--- | :--- |
 | 1 | [Анатомия AI-агента: пайплайн, цикл, инструменты, ловушки](textbook/01-anatomy-of-an-ai-agent.md) · [код](code/ch01/) | ✅ готова, сверена с видео №1 |
-| 2 | Архитектура интеллекта и памяти | ⏳ конспект в методичке |
+| 2 | [Архитектура интеллекта и памяти: роутинг, знания, память, бюджет контекста](textbook/02-intelligence-and-memory.md) · [код](code/ch02/) | ✅ готова, по конспекту видео №2 (требует сверки цифр с видео) |
 | 3 | Экономика и выбор LLM в продакшене | ⏳ конспект в методичке |
 | 4 | Harness Engineering: проектирование среды исполнения | ⏳ конспект в методичке |
 | 5 | Мультиагентные системы и паттерны | ⏳ конспект в методичке |
@@ -33,8 +33,8 @@
 Нужен Python 3.10+, внешние зависимости не требуются.
 
 ```bash
-cd code/ch01
-python3 -m unittest test_ch01.py -v
+cd code/ch01 && python3 -m unittest test_ch01.py -v
+cd ../ch02 && python3 -m unittest test_ch02.py -v
 ```
 
 Модель подключается через простой протокол (`LLM` в `agent_loop.py`): адаптер к API любого провайдера — это одна функция. Тесты работают на заглушке модели, без сети и без ключей.
@@ -67,5 +67,6 @@ GitHub Actions ([`.github/workflows/code-links.yml`](.github/workflows/code-link
 ## Источники
 
 - Д. Березницкий, [Anatomy of an AI Agent for Seniors: Pipeline, Cycle, Tools, Traps](https://www.youtube.com/watch?v=rN4_Y67Tr8I) (видео №1)
+- Д. Березницкий, [Дорогая модель ≠ умный агент. Анатомия мозга AI-агента](https://youtu.be/vjMxeQ3aIGM) (видео №2)
 - Anthropic, [Building effective agents](https://www.anthropic.com/research/building-effective-agents)
 - Полные списки — в конце каждой главы и методички.

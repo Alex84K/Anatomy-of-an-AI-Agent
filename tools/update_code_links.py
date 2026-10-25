@@ -66,7 +66,9 @@ def process(md: Path, check: bool) -> list[str]:
         anchor = f"#L{a}" if a == b else f"#L{a}-L{b}"
         return f']({m["path"]}{anchor} "code:{m["sym"]}")'
 
-    new = LINK.sub(repl, text)
+    # Примеры внутри блоков кода (```) не трогаем: это иллюстрации формата, а не ссылки
+    parts = re.split(r"(^```.*?^```)", text, flags=re.M | re.S)
+    new = "".join(part if part.startswith("```") else LINK.sub(repl, part) for part in parts)
     if new != text:
         if check:
             errors.append(f"устаревшие номера строк — {md.relative_to(ROOT)}")

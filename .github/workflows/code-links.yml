@@ -18,3 +18,6 @@ jobs:
       - name: Тесты главы 1
         working-directory: code/ch01
         run: python3 -m unittest -v
+      - name: Тесты главы 2
+        working-directory: code/ch02
+        run: python3 -m unittest -v
